@@ -6,12 +6,22 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-@AllArgsConstructor @Getter @Setter @ToString
+@Getter @Setter
 public class OpenWeather {
 
     private Coordinates coord;
-    private Weather weather;
+    private List<Weather> weather;
     private MainStats main;
     private String name;
+
+    @Override
+    public String toString() {
+        return "City: " + name + '\n' +
+                coord.toString() + '\n' +
+                main.toString() + '\n' +
+                weather.get(0).toString();
+    }
 }

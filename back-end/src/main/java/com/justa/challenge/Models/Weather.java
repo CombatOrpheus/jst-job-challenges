@@ -8,9 +8,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@AllArgsConstructor @Getter @Setter @ToString
+@Getter @Setter
 public class Weather {
 
     private int id;
     private String description;
+
+    @Override
+    public String toString() {
+        return description;
+    }
 }

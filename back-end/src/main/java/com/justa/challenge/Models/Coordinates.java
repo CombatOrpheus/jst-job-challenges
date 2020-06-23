@@ -7,9 +7,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@AllArgsConstructor @Getter @Setter @ToString
+@Getter @Setter @ToString
 public class Coordinates {
 
-    private int lon;
-    private int lat;
+    private double lon;
+    private double lat;
 }

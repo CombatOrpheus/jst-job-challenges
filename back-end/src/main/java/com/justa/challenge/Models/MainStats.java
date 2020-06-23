@@ -7,10 +7,15 @@ import lombok.Setter;
 import lombok.ToString;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@AllArgsConstructor @Getter @Setter @ToString
+@Getter @Setter
 public class MainStats {
 
     private float temp;
     private float temp_min;
     private float temp_max;
+
+    @Override
+    public String toString() {
+        return "Current Temperature: " + ((int) temp - 273) + "ºC";
+    }
 }
