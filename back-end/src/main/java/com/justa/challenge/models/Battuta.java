@@ -1,4 +1,4 @@
-package com.justa.challenge.Models;
+package com.justa.challenge.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -8,14 +8,11 @@ import lombok.Setter;
 import lombok.ToString;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Getter @Setter
-public class Weather {
+@Getter @Setter @AllArgsConstructor @ToString
+public class Battuta {
 
-    private int id;
-    private String description;
-
-    @Override
-    public String toString() {
-        return description;
-    }
+    private String name;
+    private String code;
+    private String region;
+    private String city;
 }
