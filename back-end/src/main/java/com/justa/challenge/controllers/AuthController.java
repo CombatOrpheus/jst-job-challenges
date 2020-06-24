@@ -79,16 +79,23 @@ public class AuthController {
 
     @PostMapping("/delete")
     public ResponseEntity<?> deleteUser(@Valid @RequestBody DeleteRequest deleteRequest) {
-        if (userRepository.existsByUsername(DeleteRequest.getUsername())) {
+
+        if (!userRepository.existsById(deleteRequest.getId())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: ID does not exist!"));
+        }
+
+        if (!userRepository.existsByUsername(deleteRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username does not exist!"));
         }
 
-        if (userRepository.existsByEmail(DeleteRequest.getEmail())) {
+        if (!userRepository.existsByEmail(deleteRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Email is already in use!"));
+                    .body(new MessageResponse("Error: Email does not exist!"));
         }
 
         return ResponseEntity.ok(new MessageResponse("User deleted successfully!"));
